@@ -33,6 +33,15 @@ docker-compose exec web python manage.py makemigrations
 
 docker-compose exec web python manage.py migrate
 
+## Links de sets
+
+http://www-prima.inrialpes.fr/Pointing04/data-face.html
+
+http://vision.ucsd.edu/~leekc/ExtYaleDatabase/ExtYaleB.html
+
+http://www.consortium.ri.cmu.edu/data/SRD/release/
+
+For my dataset email-me ftfajardo@gmail.com
 
 ## Authors
 
