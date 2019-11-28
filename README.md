@@ -33,7 +33,7 @@ docker-compose exec web python manage.py makemigrations
 
 docker-compose exec web python manage.py migrate
 
-## Links de sets
+## Sets Links
 
 http://www-prima.inrialpes.fr/Pointing04/data-face.html
 
