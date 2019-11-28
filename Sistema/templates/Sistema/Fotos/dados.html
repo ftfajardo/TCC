@@ -1,0 +1,40 @@
+
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dados</title>
+</head>
+
+
+<body>
+  <br />
+<p class="text-danger"> Verifique nas imagens os falsos-positivos, pois em imagens com
+  </br>  {{ n }} pessoas, se encontrado um falso-positivo, deve se somar + 1 nos falsos-positivos
+  e diminuir -1 dos corretos.
+</p>
+
+<h4>   Verdadeiros-positivos:  {{ contador_verdadeiros }}    </h4>
+<h4>   Falsos-positivos:   {{ contador_falsos_positivos }}   </h4>
+<h4>   Falsos-negativos:  {{ contador_falsos_negativos }}    </h4>
+<div class="col-sm-4">
+    <div class="text-left">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'dados' %}'" name="voltar">voltar</button>
+    </div>
+</div>
+
+
+</body>
+</html>
+

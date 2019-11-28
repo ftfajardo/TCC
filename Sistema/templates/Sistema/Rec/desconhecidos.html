@@ -1,0 +1,56 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>desc</title>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>Desconhecidos</h1>
+    <div class="text-right">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'rec' %}'" name="voltar">voltar</button>
+    </div>
+</div>
+        {% if lista_banco %}
+            <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Fotos de desconhecidos</th>
+                    <th scope="col">Matches</th>
+                    <th scope="col">Distâncias Reais</th>
+                    <th scope="col">Data</th>
+
+
+                </tr>
+              </thead>
+
+            {% for f in fotos  %}
+                          <tbody>
+                          <tr>
+                              <th scope="row"> <img src= "{{f.novaimage}}" width="80"> </th>
+                                            {% for u in fotos_cont %}
+                                                {% if u.foto_2_f == f.novaimage %}
+                                                    <td> {{u.contador }} </td>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <td>  <a href="{% url 'desconhecido_distancias' file=f.id %}" > Distâncias</a>  </td>
+
+                                            <td> {{f.fotos.dias.data }} </td>
+                          </tr>
+                          </tbody>
+
+            {% endfor %}
+            </table>
+        {% endif %}
+</body>
+</html>

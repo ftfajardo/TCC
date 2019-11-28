@@ -1,0 +1,88 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>choice</title>
+</head>
+<body>
+
+<div class="col-sm-4">
+    <div class="pull-left">
+    <h5>   Digite uma data ou default para todas datas: </h5>
+
+
+        <form action="{% url 'rec' %}" method="post" class="form">{% csrf_token %}
+            {% csrf_token %}
+          {% buttons %}
+
+                <div class="input-group mb-3">
+                  <input name="data"type="text" class="form-control"placeholder="default" value="default" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> dd-mm-yyyy com os traços</span>
+
+                  </div>
+                </div>
+
+
+              <div class="input-group mb-3">
+                  <input name="dist"type="text" class="form-control"placeholder="0.6" value="0.6" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> Distancia </span>
+
+                  </div>
+                </div>
+
+
+                <div class="input-group mb-3">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Método de Detecção utilizado para usar reconhecimento</label>
+                        <select class="form-control" name= "form2"id="exampleFormControlSelect1">
+                          <option>MTCNN</option>
+                          <option>HOG</option>
+                            <option>NN-dlib</option>
+                        </select>
+                </div>
+                </div>
+
+              <div class="form-check">
+                    <label class="form-check-label">
+                    <input name= "check1" type="checkbox" class="form-check-input" id="check1" value="true" checked="checked"> Inserir Desconhecidos no Banco
+                    </label>
+                </div>
+
+
+                  <br />
+                <div class="col-sm-3">
+                    <input class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important " name="botao"  type="submit" value="Reconhecimento"/>
+                 <div class="input-group mb-3">
+
+            </div>
+              </div>
+
+
+
+          {% endbuttons %}
+        </form>
+
+
+
+
+
+
+</div>
+</div>
+
+
+</body>
+</html>

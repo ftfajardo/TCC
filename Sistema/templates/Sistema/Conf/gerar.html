@@ -1,0 +1,125 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>choice</title>
+</head>
+<body>
+
+<div class="col-sm-4">
+    <div class="pull-left">
+    <h5>   Digite uma data ou default para todas datas: </h5>
+
+
+        <form action="{% url 'gerar' %}" method="post" class="form">{% csrf_token %}
+            {% csrf_token %}
+          {% buttons %}
+
+                <div class="input-group mb-3">
+                  <input name="data"type="text" class="form-control"placeholder="default" value="default" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> dd-mm-yyyy com os traços</span>
+
+                  </div>
+                </div>
+
+                <div class="input-group mb-3">
+                  <input name="px"type="text" class="form-control"placeholder="70" value="70" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> Tamanho da foto em px </span>
+
+                  </div>
+                </div>
+
+              <div class="input-group mb-3">
+                  <input name="treshhold"type="text" class="form-control"placeholder="0.7" value="0.7" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> Threshold </span>
+
+                  </div>
+                </div>
+
+
+                <br />
+                <div class="input-group mb-3">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Método de Detecção</label>
+                        <select class="form-control" name= "form2"id="exampleFormControlSelect1">
+                          <option>MTCNN</option>
+                          <option>HOG</option>
+                            <option>NN-dlib</option>
+                        </select>
+                </div>
+                </div>
+
+              <div class="form-check">
+                    <label class="form-check-label">
+                        <input name="check4" type="checkbox" class="form-check-input" id="check4"  >Arquivo com nome sem HORA (testes)
+                    </label>
+                </div>
+
+              <br />
+
+
+
+
+                <h6> Pré-Processamento: </h6>
+                <div class="form-check">
+                    <label class="form-check-label">
+                    <input name= "check1" type="checkbox" class="form-check-input" id="check1" value="true" checked="checked"> Utilizar faces fora das Bordas
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input name="check3" type="checkbox" class="form-check-input" value="3" checked="checked">Utilizar rotação
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input name="check2" type="checkbox" class="form-check-input" id="check2" value="2" checked="checked">Utilizar escala
+                    </label>
+                </div>
+                <div class="input-group mb-3">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Método de interpolação da escala:</label>
+                        <select class="form-control" name= "form"id="exampleFormControlSelect1">
+                          <option>INTER_LINEAR</option>
+                          <option>INTER_CUBIC</option>
+                          <option>INTER_AREA </option>
+                        </select>
+                </div>
+
+                <div class="btn-group-horizontal w-75">
+                     <button type="submit" class="btn btn-info btn-lg" style="margin-bottom: 10px; border-radius: 10px !important "value = "executar" name="executar">executar</button>
+                </div>
+                </div>
+
+
+                  <br />
+
+
+
+          {% endbuttons %}
+        </form>
+    </div>
+  </div>
+
+
+
+
+
+</body>
+</html>

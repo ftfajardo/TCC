@@ -1,0 +1,118 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detec</title>
+</head>
+
+<body>
+
+<div class="jumbotron text-center">
+    <h1>Detecção de faces</h1>
+    <div class="text-right">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'index' %}'" name="voltar">voltar</button>
+    </div>
+
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+              <div class="container text-left">
+                      <div class="btn-group-horizontal w-75">
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="gerar" onclick="location.href='{% url 'gerar' %}'" name="gerar">gerar</button>
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="excluir" onclick="location.href='{% url 'excluir' %}'" name="excluir">excluir</button>
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="validar" onclick="location.href='{% url 'consistencia' %}'" name="validar">validar</button>
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="dados" onclick="location.href='{% url 'dados' %}'" name="dados">dados individuais</button>
+                </div>
+              </div>
+    </div>
+    </div>
+  </div>
+
+{% if result_mtcnn%}
+    <h3> MTCNN  - Total de Detecções: {{ total_mtcnn }} </h3>
+    <table class="table table-striped table-light">
+              <thead>
+
+                <tr>
+                    <th scope="col">Hora Inicial</th>
+                    <th scope="col">Detecções</th>
+
+                </tr>
+              </thead>
+        {% for f in result_mtcnn  %}
+
+         <tbody>
+            <tr>
+                 <th scope="row">{{ f.inicio }}:00</th>
+                            <td>{{ f.detecs}}</td>
+
+            </tr>
+         </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+</br>
+{% if result_hog%}
+    <h3> HOG - Total de Detecções: {{ total_hog }} </h3>
+    <table class="table table-striped table-light">
+              <thead>
+
+                <tr>
+                    <th scope="col">Hora Inicial</th>
+                    <th scope="col">Detecções</th>
+
+                </tr>
+              </thead>
+        {% for f in result_hog  %}
+
+         <tbody>
+            <tr>
+                 <th scope="row">{{ f.inicio }}:00</th>
+                            <td>{{ f.detecs}}</td>
+
+            </tr>
+         </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+</br>
+{% if result_dlib%}
+    <h3> NN-dlib - Total de Detecções: {{ total_dlib }} </h3>
+    <table class="table table-striped table-light">
+              <thead>
+
+                <tr>
+                    <th scope="col">Hora Inicial</th>
+                    <th scope="col">Detecções</th>
+
+                </tr>
+              </thead>
+        {% for f in result_dlib  %}
+
+         <tbody>
+            <tr>
+                 <th scope="row">{{ f.inicio }}:00</th>
+                            <td>{{ f.detecs}}</td>
+
+            </tr>
+         </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html>

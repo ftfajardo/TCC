@@ -1,0 +1,126 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dados</title>
+</head>
+
+<body>
+  <br />
+<div class="col-sm-4">
+    <div class="text-left">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'detec' %}'" name="voltar">voltar</button>
+    </div>
+</div>
+
+  {% if mtcnn_values %}
+      <h3> MTCNN - <a href="{% url 'fotos' Metodo="MTCNN" %}" > Fotos </a>  </h3>
+      {% for data in dias_values %}
+          <li>Data: {{data.data}}    </li>
+          <br />
+          <table class="table table-striped table-light">
+              <thead>
+
+              <tr>
+                  <th scope="col">Hora Inicial</th>
+                  <th scope="col">Detecções</th>
+              </tr>
+              </thead>
+
+              {% for value in mtcnn_values %}
+                  {% if value.dia.data == data.data %}
+                      <tbody>
+                      <tr><th scope="row">{{ value.inicio }}:00</th>
+                          <td>{{ value.contador}}</td>
+                      </tr>
+                      </tbody>
+                  {% endif %}
+              {% endfor %}
+          </table>
+          <br />
+      {% endfor %}
+  {% endif %}
+
+  {% if hog_values %}
+      <h3> HOG - <a href="{% url 'fotos' Metodo="HOG" %}" > Fotos </a> </h3>
+      {% for data in dias_values %}
+          <li>Data: {{data.data}} </li>
+          <br />
+          <table class="table table-striped table-light">
+              <thead>
+
+              <tr>
+                  <th scope="col">Hora Inicial</th>
+                  <th scope="col">Detecções</th>
+              </tr>
+              </thead>
+
+              {% for value in hog_values %}
+                  {% if value.dia.data == data.data %}
+                      <tbody>
+                      <tr><th scope="row">{{ value.inicio }}:00</th>
+                          <td>{{ value.contador}}</td>
+                      </tr>
+                      </tbody>
+                  {% endif %}
+              {% endfor %}
+          </table>
+          <br />
+      {% endfor %}
+  {% endif %}
+
+
+  {% if dlib_values %}
+      <h3> NN-dlib - <a href="{% url 'fotos' Metodo="NN-dlib" %}" > Fotos </a> </h3>
+      {% for data in dias_values %}
+          <li>Data: {{data.data}}  </li>
+          <br />
+          <table class="table table-striped table-light">
+              <thead>
+
+              <tr>
+                  <th scope="col">Hora Inicial</th>
+                  <th scope="col">Detecções</th>
+              </tr>
+              </thead>
+
+              {% for value in dlib_values %}
+                  {% if value.dia.data == data.data %}
+                      <tbody>
+                      <tr><th scope="row">{{ value.inicio }}:00</th>
+                          <td>{{ value.contador}}</td>
+                      </tr>
+                      </tbody>
+                  {% endif %}
+              {% endfor %}
+          </table>
+          <br />
+      {% endfor %}
+  {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

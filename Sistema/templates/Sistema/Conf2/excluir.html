@@ -1,0 +1,62 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>choice</title>
+</head>
+<body>
+
+
+
+<div class="col-sm-4">
+    <div class="pull-left">
+    <h5>   Digite uma data para exclusão ou default para todas datas: </h5>
+
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <form action="{% url 'excluir' %}" method="post" class="form">{% csrf_token %}
+            {% csrf_token %}
+          {% buttons %}
+              <div class="container pull-left">
+
+                <div class="input-group mb-3">
+                  <input name="data"type="text" class="form-control"placeholder="default" value="default" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> dd-mm-yyyy com os traços</span>
+                  </div>
+                </div>
+
+
+
+                <div class="btn-group-horizontal w-75">
+                     <button type="submit" class="btn btn-info btn-lg" style="margin-bottom: 10px; border-radius: 10px !important "value = "executar" name="executar">executar</button>
+                </div>
+              </div>
+          {% endbuttons %}
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>desc</title>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>Desconhecidos</h1>
+    <div class="text-right">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'rec_desconhecido' %}'" name="voltar">voltar</button>
+    </div>
+</div>
+            <table class="table table-striped table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Foto do desconhecido</th>
+                    <th scope="col">Foto da tentativa</th>
+                    <th scope="col">Distância real</th>
+                </tr>
+              </thead>
+                <tbody>
+                 {% if Distancias %}
+                          {% for t in Distancias  %}
+
+
+                          <tr>
+                                <th scope="row"><img src= "{{ obj.novaimage }}" width="80"></th>
+                                <td>     <img src= "{{ t.foto_2 }}" width="80">  </td>
+                                <td>  {{ t.distancia_real }}   <td>
+
+                          </tr>
+                     {% endfor %}
+
+                 {% endif %}
+                      </tbody>
+
+            </table>
+
+</body>
+</html>

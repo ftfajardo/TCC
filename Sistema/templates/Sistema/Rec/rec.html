@@ -1,0 +1,142 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+{% if erro_tam != 0 %}
+        <div class="alert alert-danger" role="alert">
+        {% for i in erros %}
+                {{ i }} </br>
+        {% endfor %}
+        </div>
+
+        <div class="alert alert-success" role="alert">
+            {% for i in acertos %}
+                {{ i }} </br>
+            {% endfor %}
+        </div>
+
+  {% endif %}
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rec</title>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>Reconhecimento de faces - Dlib</h1>
+    <div class="text-right">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'index' %}'" name="voltar">voltar</button>
+    </div>
+<div class="text-left">
+
+
+<table class="table table-striped table-light">
+            <thead>
+
+                <tr>
+                    <th scope="col">Total de  Reconhecidos </th>
+                    <th scope="col">Total de Desconhecidos</th>
+                </tr>
+            </thead>
+             <tbody>
+            <tr>
+                 <th scope="row">{{ tam_conhecidos }}</th>
+                            <td> {{tam_desconhecidos}} </td>
+
+             </tr>
+            </tbody>
+      </table>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-10">
+              <div class="container text-left">
+                      <div class="btn-group-horizontal w-200">
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="treinar" onclick="location.href='{% url 'rec_gerar' %}'" name="reconhecimento">Reconhecimento</button>
+                          <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="treinar" onclick="location.href='{% url 'rec_desconhecido' %}'" name="desnconhecidos">Desconhecidos</button>
+
+                           <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="treinar" onclick="location.href='{% url 'rec_excluir' %}'" name="reconhecimento">Excluir</button>
+
+                      </div>
+              </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+    {% for t in datas  %}
+
+
+            {% if t.recognition_set.all %}
+
+            <h4>  <li>  Data - {{ t.data }}  </li> </h4>
+
+
+            <table class="table table-striped table-light">
+            <thead>
+
+                <tr>
+                    <th scope="col">Hora Detec</th>
+                    <th scope="col">Foto analisada</th>
+                    <th scope="col">Foto  banco</th>
+                    <th scope="col">Distância Max</th>
+                    <th scope="col">Distância Real</th>
+                    <th scope="col">Detec Origem</th>
+
+                </tr>
+              </thead>
+
+        {% for f in t.recognition_set.all  %}
+            <tbody>
+            <tr>
+                 <th scope="row">{{ f.time }}</th>
+                            <td> <img src= "{{f.foto_1}}" width="80"> </td>
+                            <td> <img src= "{{f.foto_2}}" width="80"> </td>
+                            <td> {{f.distancia}} </td>
+                            <td> {{f.distancia_real}} </td>
+
+                            <td> {{f.metodo}} </td>
+
+             </tr>
+            </tbody>
+
+
+
+        {% endfor %}
+
+        </table>
+
+        {% endif %}
+
+    {% endfor %}
+
+
+
+
+
+
+</body>
+</html>

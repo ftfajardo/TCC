@@ -1,0 +1,82 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>automatização</title>
+</head>
+
+<body>
+
+
+
+<div class="jumbotron text-center">
+    <h1>Automatização</h1>
+    <div class="text-right">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'index' %}'" name="voltar">voltar</button>
+    </div>
+     {%  for i in obj %}
+
+        {% if i.status == False %}
+            <h3> <p class="text-danger">Desativada</p> </h3>
+        {% else %}
+            <h3> <p class="text-success"> Ativada </p>
+             {{i.time}} </h3>
+        {% endif %}
+
+    {% endfor %}
+
+
+<div class="col-sm-4">
+
+    <div class="text-left">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="status" onclick="location.href='{% url 'status' %}'" name="status">Mudar Status</button>
+
+    </div>
+  <form action="{% url 'hora' %}" method="post" class="form">{% csrf_token %}
+            {% csrf_token %}
+          {% buttons %}
+              <div class="text-left">
+
+                <div class="btn-group-horizontal w-75">
+                     <button type="submit" class="btn btn-info btn-lg" style="margin-bottom: 10px; border-radius: 10px !important "value = "hora" name="hora">Mudar Hora</button>
+                </div>
+
+                <div class="input-group mb-1">
+                    <input name="hora"type="text" class="form-control"placeholder="17:00" value="17:00" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <span class="input-group-text" id="basic-addon2"> exemplo->  17:00</span>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+
+
+          {% endbuttons %}
+        </form>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

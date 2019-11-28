@@ -1,0 +1,12 @@
+O formato do results para implementação de novos métodos de detecção é :
+	Uma lista com um dicionário dentro;
+	Para cada face detectada se tem um dicionário;
+		Existem 3 tipos de chave para o dicionário;
+			box: uma lista com os valores da ROI, sendo da forma canto superior esquerdo em x,y e depois largura e altura da imagem, logo [x,y,largura,altura]; 
+			keypoints: o valor são as coordenadas dos olhos que são usadas para rotação em forma de tupla e em outro dicionário;
+			confidenve: o valor é um float com a confiança;
+
+		Exemplo com faces decetdas: 
+		[{'box': [277, 90, 48, 63], 'keypoints': {'right_eye': (314, 114), 'left_eye': (291, 117)}, 'confidence': 0.99851983785629272},{'box': [300, 100, 50, 50], 'keypoints': {'right_eye': (314, 114), 'left_eye': (291, 117)}, 'confidence': 0.9985} ]
+
+

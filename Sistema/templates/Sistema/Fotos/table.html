@@ -1,0 +1,75 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% bootstrap_messages %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{# Display a form #}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fotos</title>
+</head>
+
+
+<body>
+  <br />
+<div class="col-sm-4">
+    <div class="text-left">
+        <button class="btn btn-info btn-lg"  style="margin-bottom: 10px; border-radius: 10px !important "value="voltar" onclick="location.href='{% url 'dados' %}'" name="voltar">voltar</button>
+    </div>
+</div>
+
+
+
+
+
+    {% for t in values  %}
+      <h4>  <li>  Data - {{ t.data }}  </li> </h4>
+
+        {% for f in t.fotos_set.all  %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-1"> <p> {{ f.file_name }} </p> </div>
+
+                    <div class="col-sm-3"> <p> <img src= "{{f.image}}" width="240"> <p> </div>
+                {%  for a in Metodo_values  %}
+                    {%  if a.fotos.id == f.id %}
+                        <div class="row">
+                            <div class="col-sm-1">
+                        <p> <img src= "{{ a.novaimage}}" width="70"> </p>
+                        <p> Confiança  {{ a.precisao }} </p> </div>
+
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+
+
+                </div>
+            </div>
+
+
+        {% endfor %}
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
