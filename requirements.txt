@@ -3,7 +3,7 @@ numpy<1.17
 tensorflow==1.4.1
 pillow==5.4.1
 opencv-contrib-python>=4.1.0
-Django==2.2.5;
+Django==2.2.8;
 django-bootstrap4
 py-postgresql
 psycopg2==2.7.3.2
