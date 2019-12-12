@@ -41,7 +41,11 @@ http://vision.ucsd.edu/~leekc/ExtYaleDatabase/ExtYaleB.html
 
 http://www.consortium.ri.cmu.edu/data/SRD/release/
 
-For my dataset email-me ftfajardo@gmail.com
+For my dataset:
+
+github.com/ftfajardo/Dataset1
+
+github.com/ftfajardo/Dataset2
 
 ## Authors
 
