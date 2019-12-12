@@ -43,9 +43,9 @@ http://www.consortium.ri.cmu.edu/data/SRD/release/
 
 For my dataset:
 
-github.com/ftfajardo/Dataset1
+http://github.com/ftfajardo/Dataset1
 
-github.com/ftfajardo/Dataset2
+http://github.com/ftfajardo/Dataset2
 
 ## Authors
 
